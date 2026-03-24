@@ -21,8 +21,6 @@ $result = mysqli_query($conn, $sql);
 </head>
 <body>
 
-<a href="index.php">Home</a> | <a href="insert.php">Insert</a>
-<br><br>
 <h2>Home</h2>
 <table border="1">
     <tr>
@@ -48,6 +46,10 @@ if (mysqli_num_rows($result) > 0) {
 ?>
 
 </table>
+
+<br><br>
+<a href="index.php">Home</a> | <a href="insert.php">Add new customer</a>
+
 
 </body>
 </html>

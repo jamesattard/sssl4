@@ -13,7 +13,7 @@ if (!$conn) {
 function registration_message($fullname, $email)
     {
         echo "<p style='color:green;'>
-        Customer $fullname with email $email has been successfully registered
+        Customer $fullname with email $email has been added successfully!
         </p>";
 }
 
@@ -60,11 +60,8 @@ if (isset($_POST['submit'])) {
 </head>
 <body>
 
-<a href="index.php">Home</a> | <a href="insert.php">Insert</a>
-<br><br>
+
 <h2>Add Customer</h2>
-
-
 
 <form method="post" action="">
     Full Name:<br>
@@ -79,6 +76,9 @@ if (isset($_POST['submit'])) {
 
     <input type="submit" name="submit" value="Add Customer">
 </form>
+
+<br><br>
+<a href="index.php">Home</a> | <a href="insert.php">Add new customer</a>
 
 </body>
 </html>
