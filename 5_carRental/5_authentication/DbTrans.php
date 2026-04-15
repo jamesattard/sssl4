@@ -34,6 +34,20 @@
         }
     }
 
+    function insertEmployee($conn, $name, $email, $password) {
+        $sql = "INSERT INTO Employees (Name, Email, Password) VALUES (?, ?, ?)";
+        $stmt = mysqli_prepare($conn, $sql);
+
+        if ($stmt) {
+            mysqli_stmt_bind_param($stmt, "sss", $name, $email, $password);
+            $result = mysqli_stmt_execute($stmt);
+            mysqli_stmt_close($stmt);
+            return $result;
+        } else {
+            return false;
+        }
+    }
+
     
     function getAllCars($conn) {
         $query = "SELECT * FROM Cars";
@@ -68,17 +82,15 @@
     }
 
     function removeCar($conn, $carId) {
-        // Delete maintenance records first
-        $sql1 = "DELETE FROM carmaintenance WHERE CarID_FK = $carId";
-        mysqli_query($conn, $sql1);
-        // Then delete the car
-        $sql2 = "DELETE FROM Cars WHERE CarID = $carId";
-        $result = mysqli_query($conn, $sql2);
+        $sql = "DELETE FROM Cars WHERE CarID = $carId";
+        $result = mysqli_query($conn, $sql);
         return $result;
     }
+
     function freeResult($result) {
         mysqli_free_result($result);
     }
+    
     function closeDB($conn) {
         mysqli_close($conn);
     }
